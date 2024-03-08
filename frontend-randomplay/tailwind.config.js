@@ -11,6 +11,8 @@ module.exports = {
         'match3': "url('./assets/images/match3.svg')",
         'match4': "url('./assets/images/match4.svg')",
         'game': "url('./assets/images/game.svg')",
+        'leftarrow': "url('./assets/images/leftarrow.svg')",
+        'rightarrow': "url('./assets/images/rightarrow.svg')",
       }
     },
   },

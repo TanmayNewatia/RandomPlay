@@ -7,6 +7,7 @@ import Home from "./Home/Home";
 import MatchMaking from "./MatchMaking/MatchMaking";
 import Not_Found from "./Home/Not_Found";
 import GamePage from "./Game/GamePage";
+import OneOnOne from "./Home/OneOnOne";
 
 export default function BRouter() {
     return (
@@ -24,9 +25,13 @@ export default function BRouter() {
                     path={`/game`}
                     element={<GamePage />}
                 />
+                <Route
+                    path={`/one`}
+                    element={<OneOnOne />}
+                />
                 <Route path='*' element={<Not_Found />}
                 />
             </Routes>
-        </BrowserRouter>
+        </BrowserRouter >
     )
 }

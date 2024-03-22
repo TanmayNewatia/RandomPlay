@@ -8,7 +8,7 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 const aptosConfig = new AptosConfig({ network: Network.RANDOMNET });
 const provider = new Aptos(aptosConfig);
 
-export const moduleAddress = "0x9c66d431344cbbe4e9231fa4b52a89b2cd43bb700a1339d4ea973e7154e531df";
+export const moduleAddress = "0x5405dce9038c0c4c3f771c9c7357d366b4ff030d837a35b57196ec754049a4c1";
 
 
 export default function GamePage() {
@@ -29,7 +29,7 @@ export default function GamePage() {
         try {
             const todoListResource = await provider.getAccountResource({
                 accountAddress: account?.address,
-                resourceType: `${moduleAddress}::dice2::DiceRollHistory`
+                resourceType: `${moduleAddress}::dice::DiceRollHistory`
             }
             );
             // console.log(todoListResource.rolls[todoListResource.rolls.length - 1]);
@@ -37,8 +37,10 @@ export default function GamePage() {
             data = data[0].toString() + data[1].toString() + data[2].toString() + data[3].toString()
             // console.log(data);
             // setCounter(data);
-            sendMessage("Spawn Point", "GetRandomValue", data);
             setIsOpen(true);
+            if (isLoaded) {
+                sendMessage("Random Assign", "GetRandomValue", data);
+            }
         }
         catch (e: any) {
             console.log(e);
@@ -50,7 +52,7 @@ export default function GamePage() {
         if (!account) return [];
         const payload = {
             type: "entry_function_payload",
-            function: `${moduleAddress}::dice2::roll`,
+            function: `${moduleAddress}::dice::roll`,
             type_arguments: [],
             arguments: [],
         };
@@ -82,8 +84,8 @@ export default function GamePage() {
                         <div className={"w-full rounded-xl min-h-[500px] max-h-[500px] h-4/6"}>
                             <Fragment>
                                 {!isLoaded && (
-                                    <div className={"bg-[url('./assets/images/game.svg')] rounded-xl flex items-center justify-center !w-full !h-full"}>
-                                        <p className="text-white">Loading Application... {Math.round(loadingProgression * 100)}%</p>
+                                    <div className={"bg-[url('./assets/images/game.svg')] bg-no-repeat bg-cover bg-center rounded-xl flex items-center justify-center !w-full !h-full"}>
+                                        <p className="text-black text-xl">Loading Application... {Math.round(loadingProgression * 100)}%</p>
                                     </div>
                                 )}
                                 <Unity unityProvider={unityProvider} className="w-full h-full" style={{ visibility: isOpen ? "visible" : "hidden" }} />

@@ -14,6 +14,9 @@ export default function Home() {
                     <p className="text-[#8FB1B9] w-8/12 text-xl">
                         Randomplay Utilizes Aptos Randomness API to Power our multiplayer games not needing to rely on External Web2 Technolgies for Multiplayer Matchmaking
                     </p>
+                    <a className="home-button cursor-pointer" href="/Game">
+                        GET STARTED
+                    </a>
                 </div>
             </div>
         </div>

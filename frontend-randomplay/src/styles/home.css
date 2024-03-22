@@ -20,3 +20,16 @@
     position: absolute;
     transform: translate(0, -50%);
 }
+
+.home-button {
+    background: url("../assets/images/homebutton.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: min(220px,80%);
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
